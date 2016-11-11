@@ -171,15 +171,13 @@ function dbBackup {
 }
 
 function contentStoreBackup {
-	# Getting a variable to know all includes and excludes
-	CONTENTSTORE_DIR_INCLUDES="--include $CONTENTSTORE"
 	
 	echo "$LOG_DATE_LOG - $UXBR_LOG_TAG Backing up the ContentStore to $BACKUPTYPE" >> $UXBR_LOG_FILE
   	echo "$LOG_DATE_LOG - $UXBR_LOG_TAG Starting backup - ContentStore" >> $UXBR_LOG_FILE
-  	echo "$LOG_DATE_LOG - $UXBR_LOG_TAG Running command - $DUPLICITYBIN $PARAMS $CONTENTSTORE_DIR_INCLUDES $CONTENTSTORE_EXCLUDE_PARENT_DIR $DEST/cs" >> $UXBR_LOG_FILE
+  	echo "$LOG_DATE_LOG - $UXBR_LOG_TAG Running command - $DUPLICITYBIN $PARAMS $DEST/cs" >> $UXBR_LOG_FILE
  
  	# Content Store backup itself 
-  	$DUPLICITYBIN $PARAMS $CONTENTSTORE_DIR_INCLUDES $DEST/cs >> $UXBR_LOG_FILE
+  	$DUPLICITYBIN $PARAMS $CONTENTSTORE $DEST/cs >> $UXBR_LOG_FILE
   	echo "$LOG_DATE_LOG - $UXBR_LOG_TAG ContentStore backup done!" >> $UXBR_LOG_FILE
 }
 
