@@ -44,18 +44,18 @@ echo "USAGE:
     `basename $0` <mode> [set] [date <dest>]
 
 Modes:
-    backup [set]				runs an incremental backup or a full if first time
+    backup [set]		runs an incremental backup or a full if first time
     restore [set] [date] [dest]	runs the restore, wizard if no arguments
-    verify [set]				verifies the backup
-    collection [set]			shows all the backup sets in the archive
-    list [set]					lists the files currently backed up in the archive
+    verify [set]		verifies the backup
+    collection [set]		shows all the backup sets in the archive
+    list [set]			lists the files currently backed up in the archive
 
 Sets:
     all		do all backup sets
     db		use data base backup set (group) for selected mode
     cs		use content store backup set (group) for selected mode
     files	use rest of files backup set (group) for selected mode
-    system  use rest of system backup set (group) for selected mode"
+    system  	use rest of system backup set (group) for selected mode"
 }
 
 # Checks if encryption is required if not it adds appropiate flag
@@ -68,10 +68,10 @@ fi
 # Checks backup type, target selected
 case $BACKUPTYPE in
 	"s3" ) 
-	        	export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
+	        export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
                 export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
-				DEST=${S3FILESYSLOCATION}
-				PARAMS="${GLOBAL_DUPLICITY_PARMS} ${S3OPTIONS} ${NOENCFLAG}"
+		DEST=${S3FILESYSLOCATION}
+		PARAMS="${GLOBAL_DUPLICITY_PARMS} ${S3OPTIONS} ${NOENCFLAG}"
 		;;
 	"ftp" ) 
 		if [ ${FTPS_ENABLE} == 'false' ]; then
@@ -91,7 +91,7 @@ case $BACKUPTYPE in
 		DEST=file://${LOCAL_BACKUP_FOLDER}
 		PARAMS="${GLOBAL_DUPLICITY_PARMS} ${NOENCFLAG}"
 		;;
-	* ) echo "$LOG_DATE_LOG - [ERROR] Unknown BACKUP type <$BACKUPTYPE>, review your alfresco-backup.properties" >> $UXBR_LOG_FILE;; 
+	* ) echo "$LOG_DATE_LOG - [ERROR] Unknown BACKUP type <$BACKUPTYPE>, review your uxbr.properties" >> $UXBR_LOG_FILE;; 
 esac
 	
 # Checks if logs directory exist 
