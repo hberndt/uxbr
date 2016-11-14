@@ -20,7 +20,7 @@
 #########################################################################################
 
 # Load properties
-UXBR_PATH=~
+UXBR_PATH=.
 
 if [ -f ${UXBR_PATH}/uxbr.properties ]; then
 	. ${UXBR_PATH}/uxbr.properties 
